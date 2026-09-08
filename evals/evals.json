@@ -1,0 +1,63 @@
+{
+  "skill_name": "pbip-accessibility",
+  "evals": [
+    {
+      "id": 0,
+      "name": "report-reale-fix-completo",
+      "prompt": "Nella cartella progetto/ c'è il mio report Power BI in formato pbip (Andamento Occupazionale). Devo consegnarlo a un cliente pubblico e mi hanno chiesto che sia accessibile: puoi sistemare i testi alternativi, le descrizioni comando dei pulsanti e l'ordine con cui il Tab si muove nelle pagine? Poi dimmi cosa hai cambiato.",
+      "expected_output": "Tutti i visual.json restano JSON validi e UTF-8 senza BOM; altText aggiunto in visualContainerObjects.general[0].properties.altText sui visual che lo supportano; tooltip aggiunto in visualLink[0].properties.tooltip sui soli actionButton con azione determinabile; tabOrder in multipli di 1000 decrescenti nell'ordine di lettura; decorativi con tabOrder -9999000 e altText vuoto; position.z mai modificato; altText/tooltip preesistenti invariati; Excel di riepilogo prodotto; riepilogo finale in italiano che elenca anche le anomalie.",
+      "files": ["progetto/"],
+      "assertions": [
+        "Ogni visual.json modificato resta JSON valido e non inizia con i byte EF BB BF",
+        "Nessun valore di position.z risulta modificato rispetto all'originale",
+        "I visual senza altText che lo supportano ricevono altText in visualContainerObjects.general[0].properties.altText nel formato expr.Literal.Value con apici singoli",
+        "Gli altText e i tooltip già presenti prima dell'esecuzione sono rimasti identici",
+        "I tabOrder assegnati ai visual non decorativi sono multipli di 1000 e decrescono seguendo l'ordine di lettura della pagina",
+        "Viene prodotto un file Excel di riepilogo e il percorso è comunicato all'utente",
+        "Il riepilogo finale è in italiano e riporta le anomalie non auto-fixable con il relativo motivo"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "audit-solo-lettura",
+      "prompt": "Prima di toccare qualsiasi cosa mi serve una fotografia: fammi un audit di accessibilità del report pbip che trovi in progetto/ e mettimi i risultati in un file che posso girare al PM. NON modificare i file del report, voglio solo capire quanto siamo indietro.",
+      "expected_output": "Nessun file del progetto modificato (hash identici all'originale); prodotto un file di riepilogo (Excel) con i conteggi delle issue per categoria e per pagina e l'elenco delle anomalie; nessun apply eseguito.",
+      "files": ["progetto/"],
+      "assertions": [
+        "Gli hash di tutti i file dentro la cartella del progetto sono identici a prima dell'esecuzione",
+        "Viene prodotto un file Excel con i conteggi delle issue per categoria e per pagina",
+        "Il comando apply non viene mai invocato, né con --confirm-all né con --issue-ids",
+        "La risposta comunica all'utente dove si trova il file da inoltrare al PM"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "casi-limite-non-sovrascrivere",
+      "prompt": "In progetto/ c'è un piccolo report pbip su cui ho già iniziato a lavorare a mano: alcuni visual hanno già l'alt text scritto da me e non vanno toccati. Rendilo accessibile completando quello che manca e spiegami visual per visual cosa hai fatto e cosa hai lasciato stare.",
+      "expected_output": "I visual con altText scritto a mano conservano il testo originale invariato; i decorativi (image, shape) ricevono tabOrder -9999000 e altText stringa vuota, anche quelli che prima non avevano la proprietà; un eventuale tooltipText in general su un actionButton viene rimosso e la descrizione spostata in visualLink[0].properties.tooltip; il gruppo riceve un altText descrittivo in visualGroup.objects.general e i suoi figli non ricevono tabOrder proprio; i visual di tipo non presente nell'elenco dei supportati sono segnalati come anomalia senza altText; position.z invariato ovunque; la spiegazione distingue visual per visual fra modificati e lasciati stare.",
+      "files": ["progetto/"],
+      "assertions": [
+        "Gli altText scritti a mano dall'utente sono byte-identici a prima dell'esecuzione",
+        "Ogni visual di tipo image, shape o basicShape senza visualLink ha tabOrder -9999000 e altText con valore stringa vuota",
+        "Un actionButton che aveva tooltipText in visualContainerObjects.general non ha più quella proprietà e ha il tooltip in visualLink[0].properties.tooltip",
+        "Il contenitore visualGroup ha altText in visualGroup.objects.general[0].properties.altText e nessuno dei suoi figli ha ricevuto un tabOrder",
+        "I visual di tipo non supportato sono elencati fra le anomalie e non hanno ricevuto altText",
+        "La risposta distingue esplicitamente, visual per visual, quelli modificati da quelli lasciati invariati e perché"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "tipi-tabellari-non-sono-anomalie",
+      "prompt": "Ho un report pbip in progetto/ dove il grosso del contenuto sono tabelle e matrici. L'ultima volta che ho provato uno strumento del genere me le aveva scartate tutte dicendo che non le sapeva gestire. Fammi lo scan e dimmi se stavolta i testi alternativi delle tabelle vengono generati o no.",
+      "expected_output": "I visual di tipo matrix, tableEx e pivotTable NON compaiono fra le anomalie: ricevono un altText nella categoria altText_mancante. Il testo generato per una matrix inizia con 'Matrice che riepiloga', quello per tableEx e pivotTable con 'Tabella che riepiloga', seguito dal soggetto semantico ricavato dal titolo o dai campi query, entro 150 caratteri. La risposta risponde esplicitamente alla domanda dell'utente confermando che i tipi tabellari sono coperti.",
+      "files": ["progetto/"],
+      "assertions": [
+        "Nessun visual di tipo matrix, tableEx o pivotTable è classificato come anomalia",
+        "Ogni matrix senza altText riceve una proposta che inizia con 'Matrice che riepiloga'",
+        "Ogni tableEx e pivotTable senza altText riceve una proposta che inizia con 'Tabella che riepiloga'",
+        "Nessun altText generato supera i 150 caratteri",
+        "La risposta conferma esplicitamente all'utente che tabelle e matrici sono gestite"
+      ]
+    }
+  ]
+}
