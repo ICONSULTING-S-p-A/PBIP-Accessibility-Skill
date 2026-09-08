@@ -1,4 +1,4 @@
-# Power BI Accessibility (PBIP/PBIR)
+# Power BI Accessibility (PBIP/PBIR) Skill
 
 Audits and remediates the accessibility metadata that screen readers and keyboard
 navigation actually consume in Power BI reports: **alternative text**, **navigation
@@ -8,7 +8,7 @@ Works on reports saved in **PBIP / PBIR** format (Power BI Desktop, *Save as pro
 where these properties are declarative JSON inside each `visual.json` — and therefore
 machine-auditable, unlike the binary `.pbix` format.
 
-Maintained by [Iconsulting S.p.A.](https://www.iconsulting.biz)
+Maintained by [Iconsulting S.p.A.](https://www.iconsulting.com)
 
 ---
 
