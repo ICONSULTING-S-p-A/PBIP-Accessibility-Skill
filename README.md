@@ -118,7 +118,7 @@ and no telemetry.
 
 ## Support
 
-- Issues: `https://github.com/TODO-ORG/powerbi-accessibility/issues`
+- Issues: `https://github.com/ICONSULTING-S-p-A/PBIP-Accessibility-Skill/issues`
 - Contact: `SkillSupport@iconsulting.com`
 
 ## License

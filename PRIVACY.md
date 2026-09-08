@@ -1,8 +1,8 @@
 # Privacy notice
 
 **Plugin:** Power BI Accessibility (PBIP/PBIR)
-**Publisher:** Iconsulting S.p.A. — TODO registered address
-**Contact:** TODO@iconsulting.biz
+**Publisher:** Iconsulting S.p.A.
+**Contact:** SkillSupport@iconsulting.biz
 **Last updated:** TODO
 
 ## Summary
