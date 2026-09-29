@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "pvtConformita",
+  "position": {
+    "x": 900,
+    "y": 80,
+    "z": 4,
+    "width": 260,
+    "height": 200
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Conformita per tipologia'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Property": "Percentuale conformi"
+                }
+              },
+              "queryRef": "m.Percentuale conformi"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Property": "Tipologia"
+                }
+              },
+              "queryRef": "d.Tipologia"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

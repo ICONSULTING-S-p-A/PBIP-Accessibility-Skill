@@ -1,0 +1,12 @@
+{
+  "name": "pbip-accessibility",
+  "displayName": "Power BI Accessibility (PBIP/PBIR)",
+  "description": "Audits and remediates accessibility metadata (altText, tooltips, tab order) in Power BI PBIP/PBIR reports against WCAG / EN 301 549.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Iconsulting S.p.A.",
+    "email": "SkillSupport@iconsulting.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ICONSULTING-S-p-A/PBIP-Accessibility-Skill"
+}

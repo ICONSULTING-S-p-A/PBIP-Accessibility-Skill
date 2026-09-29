@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "donutEsiti",
+  "position": {
+    "x": 470,
+    "y": 430,
+    "z": 3,
+    "width": 260,
+    "height": 200
+  },
+  "parentGroupName": "grpEsiti",
+  "visual": {
+    "visualType": "donutChart",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Distribuzione esiti'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Property": "Numero controlli"
+                }
+              },
+              "queryRef": "m.Numero controlli"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Property": "Esito"
+                }
+              },
+              "queryRef": "d.Esito"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

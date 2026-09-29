@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "cardSenzaContesto",
+  "position": {
+    "x": 700,
+    "y": 90,
+    "z": 3,
+    "width": 260,
+    "height": 200
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true
+  }
+}

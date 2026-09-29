@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "grpEsiti",
+  "position": {
+    "x": 460,
+    "y": 420,
+    "z": 2,
+    "width": 260,
+    "height": 200
+  },
+  "visualGroup": {
+    "displayName": "Esiti"
+  }
+}
