@@ -48,7 +48,7 @@ python3 skills/pbip-accessibility/scripts/pbip_a11y.py scan "<project path>"
 python3 skills/pbip-accessibility/scripts/pbip_a11y.py issues "<project path>" --category altText_mancante --limit 20
 
 # 3. apply (refuses to run without an explicit confirmation flag)
-python3 skills/pbip-accessibility/scripts/pbip_a11y.py "<project path>" --confirm-all
+python3 skills/pbip-accessibility/scripts/pbip_a11y.py apply "<project path>" --confirm-all
 python3 skills/pbip-accessibility/scripts/pbip_a11y.py apply "<project path>" --issue-ids id1,id2
 ```
 
@@ -69,8 +69,7 @@ These are enforced by the script, not by convention:
 - **`position.z` is never modified.**
 - Findings that are not safely automatable are always reported as anomalies and never
   guessed at — see below.
-- Nothing is written outside the project except the Excel report and a scan cache in the
-  user's home directory. No files are created inside the project folder.
+- Predictable write surface: scan writes exactly two things — the Excel report, saved in the project root folder, and a scan cache in the user's home directory. apply additionally modifies only the visual.json files involved in the confirmed findings. Nothing else on disk is touched, and no files are ever created inside definition/, so the report definition contains only what Power BI Desktop expects.
 
 ## Anomalies (deliberately not automated)
 
@@ -100,14 +99,14 @@ cp -r examples/demo-pbip /tmp/demo
 python3 skills/pbip-accessibility/scripts/pbip_a11y.py scan /tmp/demo
 ```
 
-Expected: 27 findings — 13 tab order, 9 missing alt text, 1 missing tooltip,
+Expected: 33 findings — 16 tab order, 12 missing alt text, 1 missing tooltip,
 1 misplaced property, 3 anomalies. Then:
 
 ```bash
 python3 skills/pbip-accessibility/scripts/pbip_a11y.py apply /tmp/demo --confirm-all
 ```
 
-Expected: 24 applied, 3 skipped (the anomalies). Verify that `slicerAnno` still has its
+Expected: 30 applied, 3 skipped (the anomalies), 0 failed. Verify that `slicerAnno` still has its
 hand-written alt text, that `imgLogoArpa` received `tabOrder: -9999000` (excluded from
 keyboard focus), and that no `position.z` value changed.
 
@@ -123,4 +122,4 @@ and no telemetry.
 
 ## License
 
-MIT License — see [LICENSE](LICENSE).
+MIT License — see [LICENSE.md](LICENSE).
