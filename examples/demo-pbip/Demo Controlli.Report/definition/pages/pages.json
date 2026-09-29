@@ -1,0 +1,7 @@
+{
+  "pageOrder": [
+    "pagPanoramica",
+    "pagDettaglio"
+  ],
+  "activePageName": "pagPanoramica"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "shpDivisore",
+  "position": {
+    "x": 20,
+    "y": 70,
+    "z": 5,
+    "width": 260,
+    "height": 200
+  },
+  "visual": {
+    "visualType": "shape",
+    "drillFilterOtherVisuals": true
+  }
+}

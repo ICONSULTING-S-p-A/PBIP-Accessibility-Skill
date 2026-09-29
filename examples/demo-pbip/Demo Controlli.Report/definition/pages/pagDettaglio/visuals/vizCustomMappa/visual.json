@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "vizCustomMappa",
+  "position": {
+    "x": 20,
+    "y": 420,
+    "z": 3,
+    "width": 260,
+    "height": 200
+  },
+  "visual": {
+    "visualType": "Mappa_ER_1A2B3C4D5E6F7890ABCDEF12345678",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mappa province'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

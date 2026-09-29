@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "mtxEsitiPerProvincia",
+  "position": {
+    "x": 20,
+    "y": 80,
+    "z": 3,
+    "width": 260,
+    "height": 200
+  },
+  "visual": {
+    "visualType": "matrix",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Esiti per provincia'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Property": "Numero controlli"
+                }
+              },
+              "queryRef": "m.Numero controlli"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Property": "Provincia"
+                }
+              },
+              "queryRef": "d.Provincia"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Property": "Esito"
+                }
+              },
+              "queryRef": "d.Esito"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

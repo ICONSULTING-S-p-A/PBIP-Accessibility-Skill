@@ -42,14 +42,14 @@ Three commands, in a read-then-confirm-then-write sequence:
 
 ```bash
 # 1. read-only analysis: Excel report + on-screen summary, writes nothing to the project
-python3 scripts/pbip_a11y.py scan "<project path>"
+python3 skills/pbip-accessibility/scripts/pbip_a11y.py scan "<project path>"
 
 # 2. inspect specific findings
-python3 scripts/pbip_a11y.py issues "<project path>" --category altText_mancante --limit 20
+python3 skills/pbip-accessibility/scripts/pbip_a11y.py issues "<project path>" --category altText_mancante --limit 20
 
 # 3. apply (refuses to run without an explicit confirmation flag)
-python3 scripts/pbip_a11y.py apply "<project path>" --confirm-all
-python3 scripts/pbip_a11y.py apply "<project path>" --issue-ids id1,id2
+python3 skills/pbip-accessibility/scripts/pbip_a11y.py "<project path>" --confirm-all
+python3 skills/pbip-accessibility/scripts/pbip_a11y.py apply "<project path>" --issue-ids id1,id2
 ```
 
 ## Safety properties
@@ -123,4 +123,4 @@ and no telemetry.
 
 ## License
 
-Apache-2.0 — see [LICENSE](LICENSE).
+MIT License — see [LICENSE](LICENSE).
