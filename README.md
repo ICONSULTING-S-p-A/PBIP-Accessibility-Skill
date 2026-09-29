@@ -122,4 +122,4 @@ and no telemetry.
 
 ## License
 
-MIT License — see [LICENSE.md](LICENSE).
+MIT License — see [LICENSE.md](LICENSE.md).
