@@ -41,7 +41,7 @@ hundreds of files produces silent errors that break the report in Power BI Deskt
 Three commands, in a read-then-confirm-then-write sequence:
 
 ```bash
-# 1. read-only analysis: Excel report + on-screen summary, writes nothing to the project
+# 1. read-only analysis: Excel report + on-screen summary, writes nothing to the report definition
 python3 skills/pbip-accessibility/scripts/pbip_a11y.py scan "<project path>"
 
 # 2. inspect specific findings
@@ -122,4 +122,4 @@ and no telemetry.
 
 ## License
 
-MIT License — see [LICENSE.md](LICENSE.md).
+MIT License — see [LICENSE.MD](LICENSE.MD).
